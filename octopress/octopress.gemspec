@@ -1,6 +1,6 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','octopress','version.rb'])
-spec = Gem::Specification.new do |s| 
+spec = Gem::Specification.new do |s|
   s.name = 'octopress'
   s.version = Octopress::VERSION
   s.author = ['Brandon Mathis', 'Adam Williams', 'Scott Davis']
@@ -26,10 +26,10 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('jekyll', '~> 0.11.0')
   s.add_dependency('rubyzip', '~> 0.9.5')
 
-  s.add_development_dependency('fakefs')
-  s.add_development_dependency('webmock')
   s.add_development_dependency('aruba', '~> 0.4.11')
+  s.add_development_dependency('fakefs')
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
+  s.add_development_dependency('webmock')
 
 end
