@@ -1,0 +1,21 @@
+# Configuration values in this file override those found in your _theme.yml
+# configuration.
+#
+# Make your changes here!
+#
+
+url: http://yoursite.com
+title: My Octopress Blog
+subtitle: A blogging framework for hackers.
+author: Your Name
+permalink: /blog/:year/:month/:day/:title/
+
+source: .
+destination: ./_site
+plugins: ./_plugins
+
+markdown: rdiscount
+
+# Default python pygments have been replaced by pygments.rb
+#
+pygments: false
