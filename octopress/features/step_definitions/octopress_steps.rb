@@ -31,6 +31,7 @@ Then /a theme-classic project structure should exist/ do
     favicon.png
     index.html
     _sass/screen.scss
+    _theme.yml
   ), true)
 
 end
