@@ -13,7 +13,12 @@ Feature: post subcommand
     And the post "new-post.markdown" should contain front matter:
       | title | "new-post" |
 
-  Scenario: Specify postname with no spaces or quoting
+  Scenario: Specify post name with no spaces or quoting
     When I successfully run `octopress post named`
     Then a post with filename "YYYY-MM-DD-named.markdown" should exist
 
+  Scenario: Specify post name as quoted string
+    When I successfully run `octopress post "My Fancy Post"`
+    Then a post with filename "YYYY-MM-DD-my-fancy-post.markdown" should exist
+    And the post "my-fancy-post.markdown" should contain front matter:
+      | title | "My Fancy Post" |

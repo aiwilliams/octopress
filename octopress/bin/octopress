@@ -35,7 +35,7 @@ end
 
 command :post do |c|
   c.action do |global_options,options,args|
-    Octopress::Commands::Post.new('.', name:args[0] || 'new-post').execute
+    Octopress::Commands::Post.new('.', title:args[0] || 'new-post').execute
   end
 end
 

@@ -25,6 +25,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('gli', '~> 1.4.0')
   s.add_dependency('jekyll', '~> 0.11.0')
   s.add_dependency('rubyzip', '~> 0.9.5')
+  s.add_dependency('stringex', '~> 1.3.0')
 
   s.add_development_dependency('aruba', '~> 0.4.11')
   s.add_development_dependency('fakefs')

@@ -1,4 +1,5 @@
 require 'erb'
+require 'stringex'
 
 class Octopress::Commands::Post
   include Octopress::Util
@@ -12,12 +13,12 @@ class Octopress::Commands::Post
     @options = options
   end
 
-  def name
-    options[:name]
+  def filename
+    title.to_url
   end
 
   def title
-    options[:name]
+    options[:title]
   end
 
   def date
@@ -31,7 +32,7 @@ class Octopress::Commands::Post
   def execute
     template_path = File.join template_root, 'post.erb'
     template = ERB.new File.read(template_path)
-    path = File.join project_root, '_posts', "#{date}-#{name}.markdown"
+    path = File.join project_root, '_posts', "#{date}-#{filename}.markdown"
     File.open path, 'w' do |f|
       f.write template.result(binding)
     end
