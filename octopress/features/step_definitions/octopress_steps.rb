@@ -39,8 +39,15 @@ Given /^I have a blog$/ do
   create_dir '_posts'
 end
 
-Then /^a post with filename "YYYY-MM-DD-(.*)"$/ do |filename|
+Then /^a post with filename "YYYY-MM-DD-(.*)" should exist$/ do |filename|
   check_file_presence([
     "_posts/#{Time.now.strftime('%Y-%m-%d')}-#{filename}"
   ], true)
+end
+
+Then /^the post "(.*)" should contain front matter:$/ do |filename, table|
+  path = "_posts/#{Time.now.strftime('%Y-%m-%d')}-#{filename}"
+  table.rows_hash.each do |k,v|
+    check_file_content path, /#{k}: #{v}/, true
+  end
 end

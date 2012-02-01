@@ -1,22 +1,39 @@
+require 'erb'
+
 class Octopress::Commands::Post
   include Octopress::Util
 
-  attr_reader :options, :project_root
+  attr_reader :options, :project_root, :template_root
 
   def initialize(project_path, options)
+    @post_time = Time.now
     @project_root = File.expand_path project_path
     @template_root = Octopress.template_root
     @options = options
   end
 
-  def post_name
+  def name
     options[:name]
   end
 
+  def title
+    options[:name]
+  end
+
+  def date
+    @post_time.strftime('%Y-%m-%d')
+  end
+
+  def time
+    @post_time.strftime('%Y-%m-%d %H:%M')
+  end
+
   def execute
-    path = File.join project_root, '_posts', "#{Time.now.strftime('%Y-%m-%d')}-#{post_name}.markdown"
+    template_path = File.join template_root, 'post.erb'
+    template = ERB.new File.read(template_path)
+    path = File.join project_root, '_posts', "#{date}-#{name}.markdown"
     File.open path, 'w' do |f|
-      f.puts 'You did it'
+      f.write template.result(binding)
     end
   end
 end
