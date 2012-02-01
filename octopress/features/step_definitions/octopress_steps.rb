@@ -34,3 +34,13 @@ Then /a theme-classic project structure should exist/ do
   ), true)
 
 end
+
+Given /^I have a blog$/ do
+  create_dir '_posts'
+end
+
+Then /^a post with filename "YYYY-MM-DD-(.*)"$/ do |filename|
+  check_file_presence([
+    "_posts/#{Time.now.strftime('%Y-%m-%d')}-#{filename}"
+  ], true)
+end
