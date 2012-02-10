@@ -2,8 +2,6 @@ require 'erb'
 require 'stringex'
 
 class Octopress::Commands::Post
-  include Octopress::Util
-
   attr_reader :options, :project_root, :template_root
 
   def initialize(project_path, options)

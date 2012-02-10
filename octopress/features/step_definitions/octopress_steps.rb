@@ -38,6 +38,7 @@ end
 
 Given /^I have a blog$/ do
   create_dir '_posts'
+  write_file '_posts/2011-01-01-test-post.markdown', 'Hello!'
 end
 
 Then /^a post with filename "YYYY-MM-DD-(.*)" should exist$/ do |filename|
@@ -51,4 +52,8 @@ Then /^the post "(.*)" should contain front matter:$/ do |filename, table|
   table.rows_hash.each do |k,v|
     check_file_content path, /#{k}: #{v}/, true
   end
+end
+
+Then /^a generated site should exist$/ do
+  check_directory_presence ['_site'], true
 end
